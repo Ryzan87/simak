@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ArsipController;
+use App\Http\Controllers\CalonMahasiswaController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\RiwayatController;
 use Illuminate\Support\Facades\Route;
@@ -43,17 +44,17 @@ Route::middleware('auth.token')
  * ? contoh penggunaan: middleware(['auth.token', 'auth.mahasiswa'])
  */
 
- /**
-  * Apabila telah menambahkan route baru tetapi tidak dapat diakses
-  * buka terminal baru dan jalankan perintah 'php artisan optimize' tanpa tanda petik
-  */
+/**
+ * Apabila telah menambahkan route baru tetapi tidak dapat diakses
+ * buka terminal baru dan jalankan perintah 'php artisan optimize' tanpa tanda petik
+ */
 
-  /**
-   * Profile untuk semua role
-   */
-  Route::controller(ProfileController::class)
+/**
+ * Profile untuk semua role
+ */
+Route::controller(ProfileController::class)
     ->middleware('auth.token')
-    ->group (function () {
+    ->group(function () {
         Route::get('/profile', 'index');
         Route::put('/profile', 'updateImage');
         Route::get('/password', 'password');
@@ -65,7 +66,7 @@ Route::middleware('auth.token')
  */
 Route::controller(KategoriController::class)
     ->middleware('auth.token')
-    ->group (function () {
+    ->group(function () {
         Route::get('/kategori', 'index')->name('kategori.index');
         Route::get('/kategori/create', 'create');
         Route::post('/kategori/save', 'save');
@@ -75,12 +76,26 @@ Route::controller(KategoriController::class)
     });
 
 /**
+ * Data Calon Mahasiswa untuk semua role
+ */
+Route::controller(CalonMahasiswaController::class)
+    ->middleware('auth.token')
+    ->group(function () {
+        Route::get('/calon-mahasiswa', 'index')->name('calon-mahasiswa.index');
+        Route::get('/calon-mahasiswa/create', 'create');
+        Route::post('/calon-mahasiswa/save', 'save');
+        Route::get('/calon-mahasiswa/edit/{id}', 'edit');
+        Route::post('/calon-mahasiswa/update/{id}', 'update');
+        Route::get('/calon-mahasiswa/delete/{id}', 'delete');
+    });
+
+/**
  * Arsip untuk semua role
  *
  */
 Route::controller(ArsipController::class)
     ->middleware('auth.token')
-    ->group (function () {
+    ->group(function () {
         Route::get('/arsip', 'index')->name('arsip.index');
         Route::get('/arsip/create', 'create');
         Route::post('/arsip/save', 'save');
@@ -96,7 +111,7 @@ Route::controller(ArsipController::class)
  */
 Route::controller(StaffController::class)
     ->middleware(['auth.token', 'auth.admin'])
-    ->group (function () {
+    ->group(function () {
         Route::get('/staff', 'index')->name('staff.index');
     });
 
@@ -105,6 +120,6 @@ Route::controller(StaffController::class)
  */
 Route::controller(RiwayatController::class)
     ->middleware(['auth.token'])
-    ->group (function () {
+    ->group(function () {
         Route::get('/riwayat', 'index')->name('riwayat.index');
     });

@@ -16,6 +16,12 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="{{ route('calon-mahasiswa.index') }}" aria-expanded="false"><span class="educate-icon educate-course icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                            <span class="mini-click-non">Data Calon Mahasiswa</span>
+                        </a>
+                    </li>
+
                     <?php if (session()->has('role') && isset(session('role')['is_admin'])): ?>
                         <li>
                             <a href="/kategori" aria-expanded="false"><span class="educate-icon educate-course icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Data Kategori</span></a>
