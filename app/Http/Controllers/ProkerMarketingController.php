@@ -14,11 +14,8 @@ class ProkerMarketingController extends Controller
         $proker_marketing = ProkerMarketing::query();
 
         if ($request->query('search')) {
-            $proker_marketing = $proker_marketing->where('nama_sekolah', 'like', '%' . $request->query('search') . '%');
-            $proker_marketing = $proker_marketing->orWhere('nama_agen', 'like', '%' . $request->query('search') . '%');
-            $proker_marketing = $proker_marketing->orWhere('area', 'like', '%' . $request->query('search') . '%');
-            $proker_marketing = $proker_marketing->orWhere('no_hp', 'like', '%' . $request->query('search') . '%');
-            $proker_marketing = $proker_marketing->orWhere('status', 'like', '%' . $request->query('search') . '%');
+            $proker_marketing = $proker_marketing->where('nama', 'like', '%' . $request->query('search') . '%');
+            $proker_marketing = $proker_marketing->orWhere('deskripsi', 'like', '%' . $request->query('search') . '%');
         }
 
         return view('proker-marketing.staff.index', [

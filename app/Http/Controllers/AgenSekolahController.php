@@ -18,7 +18,6 @@ class AgenSekolahController extends Controller
             $agen_sekolah = $agen_sekolah->orWhere('nama_agen', 'like', '%' . $request->query('search') . '%');
             $agen_sekolah = $agen_sekolah->orWhere('area', 'like', '%' . $request->query('search') . '%');
             $agen_sekolah = $agen_sekolah->orWhere('no_hp', 'like', '%' . $request->query('search') . '%');
-            $agen_sekolah = $agen_sekolah->orWhere('status', 'like', '%' . $request->query('search') . '%');
         }
 
         return view('agen-sekolah.staff.index', [
