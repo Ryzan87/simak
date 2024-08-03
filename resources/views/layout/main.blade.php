@@ -49,5 +49,8 @@
 
     <!-- Footer -->
     @include('layout.footer')
+
+    @stack('script')
 </body>
+
 </html>

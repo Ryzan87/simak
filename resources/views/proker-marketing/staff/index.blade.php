@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="breadcome-heading">
-                                    <h4 style="margin-bottom: 0px">Data Kategori</h4>
+                                    <h4 style="margin-bottom: 0px">Data Program Kerja Marketing</h4>
                                 </div>
                             </div>
                         </div>
@@ -22,7 +22,7 @@
         <div class="panel panel">
 
             <div class="panel-heading">
-                <h3 class="panel-title">Data kategori</h3>
+                <h3 class="panel-title">Data Program Kerja Marketing</h3>
             </div>
             <div class="panel-body">
 
@@ -30,7 +30,7 @@
                     <div class="col-lg-2">
                         <div class="row">
                             <div class="col-lg-6">
-                                <form action="{{ route('calon-mahasiswa.import') }}" enctype="multipart/form-data"
+                                <form action="{{ route('proker-marketing.import') }}" enctype="multipart/form-data"
                                     method="post" id="uploadForm">
                                     @csrf
                                     <label for="file" class="btn btn-success">Upload Excel</label>
@@ -39,7 +39,7 @@
                                 </form>
                             </div>
                             <div class="col-lg-6">
-                                <form action="{{ route('calon-mahasiswa.clear') }}" enctype="multipart/form-data"
+                                <form action="{{ route('proker-marketing.clear') }}" enctype="multipart/form-data"
                                     method="post" id="uploadForm">
                                     @csrf
                                     @method('DELETE')
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="col-sm-offset-10 col-sm-6">
-                        <form action="{{ route('calon-mahasiswa.index') }}" method="get">
+                        <form action="{{ route('proker-marketing.index') }}" method="get">
                             <label>Search: <input type="search" class="form-control input-sm" name="search"
                                     value="{{ request()->get('search') }}">
                             </label>
@@ -63,33 +63,21 @@
                         <tr>
                             <th width="1%">No</th>
                             <th>Nama Sekolah</th>
-                            <th>Kelas</th>
-                            <th>Nama Siswa</th>
-                            <th>No. Hp</th>
+                            <th>Nama Agen</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($calon_mahasiswa as $item)
+                        @foreach ($proker_marketing as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->nama_sekolah }}</td>
-                                <td>{{ $item->kelas }}</td>
-                                <td>{{ $item->nama_siswa }}</td>
-                                <td>{{ $item->no_hp }}</td>
+                                <td>{{ $item->nama }}</td>
+                                <td>{{ $item->deskripsi }}</td>
                                 <td style="text-align: center">
-                                    @if ($item->is_pendaftaran)
-                                        <span>Terdaftar</span>
+                                    @if ($item->status)
+                                        <span>SELESAI</span>
                                     @else
-                                        <span>
-                                            <strong>BELUM TERDAFTAR</strong>
-                                        </span>
-                                        <form action="{{ route('calon-mahasiswa.index', $item->id) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <button type="submit" class="btn-success"
-                                                style="border: 0; width: 100%; border-radius: 4px;">Cek</button>
-                                        </form>
+                                        <strong>BELUM SELESAI</strong>
                                     @endif
                                 </td>
                             </tr>
@@ -97,7 +85,7 @@
                     </tbody>
                 </table>
 
-                {{ $calon_mahasiswa->links() }}
+                {{ $proker_marketing->links() }}
 
             </div>
         </div>

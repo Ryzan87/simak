@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CalonMahasiswaModel extends Model
+class AgenSekolah extends Model
 {
     use HasFactory;
 
@@ -14,21 +14,18 @@ class CalonMahasiswaModel extends Model
      *
      * @var string
      */
-    protected $table = 'calon_mahasiswa';
+    protected $table = 'agen_sekolah';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['nama_sekolah', 'kelas', 'nama_siswa', 'no_hp'];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'is_pendaftaran' => 'boolean'
+    protected $fillable = [
+        'nama_sekolah',
+        'nama_agen',
+        'area',
+        'no_hp',
+        'status'
     ];
 }

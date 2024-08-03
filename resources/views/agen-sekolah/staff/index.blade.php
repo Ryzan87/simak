@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="breadcome-heading">
-                                    <h4 style="margin-bottom: 0px">Data Kategori</h4>
+                                    <h4 style="margin-bottom: 0px">Data Agen Sekolah</h4>
                                 </div>
                             </div>
                         </div>
@@ -22,7 +22,7 @@
         <div class="panel panel">
 
             <div class="panel-heading">
-                <h3 class="panel-title">Data kategori</h3>
+                <h3 class="panel-title">Data Agen Sekolah</h3>
             </div>
             <div class="panel-body">
 
@@ -30,7 +30,7 @@
                     <div class="col-lg-2">
                         <div class="row">
                             <div class="col-lg-6">
-                                <form action="{{ route('calon-mahasiswa.import') }}" enctype="multipart/form-data"
+                                <form action="{{ route('agen-sekolah.import') }}" enctype="multipart/form-data"
                                     method="post" id="uploadForm">
                                     @csrf
                                     <label for="file" class="btn btn-success">Upload Excel</label>
@@ -39,7 +39,7 @@
                                 </form>
                             </div>
                             <div class="col-lg-6">
-                                <form action="{{ route('calon-mahasiswa.clear') }}" enctype="multipart/form-data"
+                                <form action="{{ route('agen-sekolah.clear') }}" enctype="multipart/form-data"
                                     method="post" id="uploadForm">
                                     @csrf
                                     @method('DELETE')
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="col-sm-offset-10 col-sm-6">
-                        <form action="{{ route('calon-mahasiswa.index') }}" method="get">
+                        <form action="{{ route('agen-sekolah.index') }}" method="get">
                             <label>Search: <input type="search" class="form-control input-sm" name="search"
                                     value="{{ request()->get('search') }}">
                             </label>
@@ -63,41 +63,29 @@
                         <tr>
                             <th width="1%">No</th>
                             <th>Nama Sekolah</th>
-                            <th>Kelas</th>
-                            <th>Nama Siswa</th>
-                            <th>No. Hp</th>
+                            <th>Nama Agen</th>
+                            <th>Area</th>
+                            <th>No. Telepon</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($calon_mahasiswa as $item)
+                        @foreach ($agen_sekolah as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama_sekolah }}</td>
-                                <td>{{ $item->kelas }}</td>
-                                <td>{{ $item->nama_siswa }}</td>
+                                <td>{{ $item->nama_agen }}</td>
+                                <td>{{ $item->area }}</td>
                                 <td>{{ $item->no_hp }}</td>
                                 <td style="text-align: center">
-                                    @if ($item->is_pendaftaran)
-                                        <span>Terdaftar</span>
-                                    @else
-                                        <span>
-                                            <strong>BELUM TERDAFTAR</strong>
-                                        </span>
-                                        <form action="{{ route('calon-mahasiswa.index', $item->id) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <button type="submit" class="btn-success"
-                                                style="border: 0; width: 100%; border-radius: 4px;">Cek</button>
-                                        </form>
-                                    @endif
+                                    {{ $item->status }}
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
 
-                {{ $calon_mahasiswa->links() }}
+                {{ $agen_sekolah->links() }}
 
             </div>
         </div>

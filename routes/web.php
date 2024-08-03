@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AgenSekolahController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ArsipController;
 use App\Http\Controllers\CalonMahasiswaController;
+use App\Http\Controllers\ProkerMarketingController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\RiwayatController;
 use Illuminate\Support\Facades\Route;
@@ -82,11 +84,30 @@ Route::controller(CalonMahasiswaController::class)
     ->middleware('auth.token')
     ->group(function () {
         Route::get('/calon-mahasiswa', 'index')->name('calon-mahasiswa.index');
-        Route::get('/calon-mahasiswa/create', 'create');
-        Route::post('/calon-mahasiswa/save', 'save');
-        Route::get('/calon-mahasiswa/edit/{id}', 'edit');
-        Route::post('/calon-mahasiswa/update/{id}', 'update');
-        Route::get('/calon-mahasiswa/delete/{id}', 'delete');
+        Route::post('/calon-mahasiswa/import', 'import')->name('calon-mahasiswa.import');
+        Route::delete('/calon-mahasiswa/clear', 'clear')->name('calon-mahasiswa.clear');
+    });
+
+/**
+ * Data Agen Sekolah untuk semua role
+ */
+Route::controller(AgenSekolahController::class)
+    ->middleware('auth.token')
+    ->group(function () {
+        Route::get('/agen-sekolah', 'index')->name('agen-sekolah.index');
+        Route::post('/agen-sekolah/import', 'import')->name('agen-sekolah.import');
+        Route::delete('/agen-sekolah/clear', 'clear')->name('agen-sekolah.clear');
+    });
+
+/**
+ * Data Proker Marketing untuk semua role
+ */
+Route::controller(ProkerMarketingController::class)
+    ->middleware('auth.token')
+    ->group(function () {
+        Route::get('/proker-marketing', 'index')->name('proker-marketing.index');
+        Route::post('/proker-marketing/import', 'import')->name('proker-marketing.import');
+        Route::delete('/proker-marketing/clear', 'clear')->name('proker-marketing.clear');
     });
 
 /**
