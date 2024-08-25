@@ -38,4 +38,19 @@ class CalonMahasiswaController extends Controller
 
         return redirect()->route('calon-mahasiswa.index');
     }
+
+    public function update(string $id)
+    {
+        $calon_mahasiswa = CalonMahasiswaModel::find($id);
+
+        if (!$calon_mahasiswa) {
+            return redirect()->back();
+        }
+
+        $calon_mahasiswa->is_pendaftaran = true;
+
+        $calon_mahasiswa->save();
+
+        return redirect()->back();
+    }
 }

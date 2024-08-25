@@ -66,6 +66,7 @@
                             <th>Kelas</th>
                             <th>Nama Siswa</th>
                             <th>No. Hp</th>
+                            <th>Aksi</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -79,19 +80,21 @@
                                 <td>{{ $item->kelas }}</td>
                                 <td>{{ $item->nama_siswa }}</td>
                                 <td>{{ $item->no_hp }}</td>
-                                <td style="text-align: center">
-                                    @if ($item->is_pendaftaran)
-                                        <span>Terdaftar</span>
-                                    @else
-                                        <span>
-                                            <strong>BELUM TERDAFTAR</strong>
-                                        </span>
-                                        <form action="{{ route('calon-mahasiswa.index', $item->id) }}" method="post">
+                                <td>
+                                    @if (!$item->is_pendaftaran)
+                                        <form action="{{ route('calon-mahasiswa.update', $item->id) }}" method="post">
                                             @csrf
                                             @method('PUT')
-                                            <button type="submit" class="btn-success"
-                                                style="border: 0; width: 100%; border-radius: 4px;">Cek</button>
+                                            <button type="submit" class="btn btn-info btn-sm">Selesaikan</button>
                                         </form>
+                                    @else
+                                    @endif
+                                </td>
+                                <td style="text-align: center">
+                                    @if ($item->is_pendaftaran)
+                                        <span>TERDAFTAR</span>
+                                    @else
+                                        <strong>BELUM TERDAFTAR</strong>
                                     @endif
                                 </td>
                             </tr>

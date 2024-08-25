@@ -84,6 +84,7 @@ Route::controller(CalonMahasiswaController::class)
     ->middleware('auth.token')
     ->group(function () {
         Route::get('/calon-mahasiswa', 'index')->name('calon-mahasiswa.index');
+        Route::put('/calon-mahasiswa/{id}', 'update')->name('calon-mahasiswa.update');
         Route::post('/calon-mahasiswa/import', 'import')->name('calon-mahasiswa.import');
         Route::delete('/calon-mahasiswa/clear', 'clear')->name('calon-mahasiswa.clear');
     });
