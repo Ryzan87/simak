@@ -64,15 +64,28 @@
                             <th width="1%">No</th>
                             <th>Nama Sekolah</th>
                             <th>Nama Agen</th>
+                            <th>Aksi</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($proker_marketing as $item)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    {{ $loop->iteration + ($proker_marketing->currentPage() - 1) * $proker_marketing->perPage() }}
+                                </td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->deskripsi }}</td>
+                                <td>
+                                    @if (!$item->status)
+                                        <form action="{{ route('proker-marketing.update', $item->id) }}" method="post">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="btn btn-info btn-sm">Selesaikan</button>
+                                        </form>
+                                    @else
+                                    @endif
+                                </td>
                                 <td style="text-align: center">
                                     @if ($item->status)
                                         <span>SELESAI</span>
