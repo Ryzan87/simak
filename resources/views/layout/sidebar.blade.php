@@ -33,7 +33,7 @@
                     <li>
                         <a href="{{ route('proker-marketing.index') }}" aria-expanded="false"><span
                                 class="educate-icon educate-course icon-wrap sub-icon-mg" aria-hidden="true"></span>
-                            <span class="mini-click-non">Data Program Kerja Marketing</span>
+                            <span class="mini-click-non">Program Kerja Marketing</span>
                         </a>
                     </li>
 

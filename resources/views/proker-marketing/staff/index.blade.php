@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="breadcome-heading">
-                                    <h4 style="margin-bottom: 0px">Data Program Kerja Marketing</h4>
+                                    <h4 style="margin-bottom: 0px">Program Kerja Marketing</h4>
                                 </div>
                             </div>
                         </div>
@@ -22,7 +22,7 @@
         <div class="panel panel">
 
             <div class="panel-heading">
-                <h3 class="panel-title">Data Program Kerja Marketing</h3>
+                <h3 class="panel-title">Program Kerja Marketing</h3>
             </div>
             <div class="panel-body">
 
@@ -33,7 +33,7 @@
                                 <form action="{{ route('proker-marketing.import') }}" enctype="multipart/form-data"
                                     method="post" id="uploadForm">
                                     @csrf
-                                    <label for="file" class="btn btn-success">Upload Excel</label>
+                                    <label for="file" class="btn btn-success">Upload</label>
                                     <input type="file" name="file" style="display: none" id="file"
                                         accept=".csv, .xlsx">
                                 </form>

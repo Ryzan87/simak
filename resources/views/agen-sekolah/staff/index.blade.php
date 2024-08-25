@@ -33,7 +33,7 @@
                                 <form action="{{ route('agen-sekolah.import') }}" enctype="multipart/form-data"
                                     method="post" id="uploadForm">
                                     @csrf
-                                    <label for="file" class="btn btn-success">Upload Excel</label>
+                                    <label for="file" class="btn btn-success">Upload</label>
                                     <input type="file" name="file" style="display: none" id="file"
                                         accept=".csv, .xlsx">
                                 </form>
