@@ -44,7 +44,8 @@
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" value="1">
-                                    <button type="submit" class="btn btn-danger">Clear Data</button>
+                                    <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('apakah anda yakin?')">Clear Data</button>
                                 </form>
                             </div>
                         </div>
