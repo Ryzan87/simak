@@ -72,7 +72,9 @@
                     <tbody>
                         @foreach ($calon_mahasiswa as $item)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    {{ $loop->iteration + ($calon_mahasiswa->currentPage() - 1) * $calon_mahasiswa->perPage() }}
+                                </td>
                                 <td>{{ $item->nama_sekolah }}</td>
                                 <td>{{ $item->kelas }}</td>
                                 <td>{{ $item->nama_siswa }}</td>

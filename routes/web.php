@@ -106,6 +106,7 @@ Route::controller(ProkerMarketingController::class)
     ->middleware('auth.token')
     ->group(function () {
         Route::get('/proker-marketing', 'index')->name('proker-marketing.index');
+        Route::put('/proker-marketing/{id}', 'update')->name('proker-marketing.update');
         Route::post('/proker-marketing/import', 'import')->name('proker-marketing.import');
         Route::delete('/proker-marketing/clear', 'clear')->name('proker-marketing.clear');
     });

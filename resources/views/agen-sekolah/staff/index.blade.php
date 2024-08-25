@@ -72,7 +72,9 @@
                     <tbody>
                         @foreach ($agen_sekolah as $item)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    {{ $loop->iteration + ($agen_sekolah->currentPage() - 1) * $agen_sekolah->perPage() }}
+                                </td>
                                 <td>{{ $item->nama_sekolah }}</td>
                                 <td>{{ $item->nama_agen }}</td>
                                 <td>{{ $item->area }}</td>

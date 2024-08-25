@@ -36,4 +36,19 @@ class ProkerMarketingController extends Controller
 
         return redirect()->route('proker-marketing.index');
     }
+
+    public function update(Request $request, string $id)
+    {
+        $proker_marketing = ProkerMarketing::find($id);
+
+        if (!$proker_marketing) {
+            return redirect()->back();
+        }
+
+        $proker_marketing->status = true;
+
+        $proker_marketing->save();
+
+        return redirect()->back();
+    }
 }
