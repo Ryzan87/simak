@@ -66,7 +66,7 @@
                             <th>Nama Agen</th>
                             <th>Area</th>
                             <th>No. Telepon</th>
-                            <th>Status</th>
+                            {{-- <th>Status</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -79,9 +79,9 @@
                                 <td>{{ $item->nama_agen }}</td>
                                 <td>{{ $item->area }}</td>
                                 <td>{{ $item->no_hp }}</td>
-                                <td style="text-align: center">
+                                {{-- <td style="text-align: center">
                                     {{ $item->status }}
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                     </tbody>
